@@ -23,143 +23,141 @@
     `\CurrentOption'}}
 \ProcessOptions\relax
 \ifthenelse{\boolean{PEDOMETRIAnews@driver}}{}{
-\RequirePackage{multicol,graphicx,color,fancyhdr,hyperref}
-\newcommand{\volume}[1]{\def\PEDOMETRIAnews@volume{#1}}
-\newcommand{\volnumber}[1]{\def\PEDOMETRIAnews@number{#1}}
-\renewcommand{\date}[1]{\def\PEDOMETRIAnews@date{#1}}
-\setcounter{secnumdepth}{-1}
-\renewcommand{\author}[1]{\def\PEDOMETRIAnews@author{#1}}
-\renewcommand{\title}[1]{\def\PEDOMETRIAnews@title{#1}}
-\newcommand{\subtitle}[1]{\def\PEDOMETRIAnews@subtitle{#1}}
-\newenvironment{article}{%
-  \author{}\title{}\subtitle{}}{\end{multicols}}
-\renewcommand{\maketitle}{
-  \begin{multicols}{2}[\chapter{\PEDOMETRIAnews@title}\refstepcounter{chapter}][3cm]
-    \ifx\empty\Rnews@subtitle\else\noindent\textbf{\PEDOMETRIAnews@subtitle}
-    \par\nobreak\addvspace{\baselineskip}\fi
-    \ifx\empty\PEDOMETRIAnews@author\else\noindent\textit{\PEDOMETRIAnews@author}
-    \par\nobreak\addvspace{\baselineskip}\fi
-    \@afterindentfalse\@nobreaktrue\@afterheading}
-\renewcommand\chapter{\secdef\PEDOMETRIAnews@chapter\@schapter}
-\providecommand{\nohyphens}{%
-  \hyphenpenalty=10000\exhyphenpenalty=10000\relax}
-\newcommand{\PEDOMETRIAnews@chapter}{%
-  \renewcommand{\@seccntformat}[1]{}%
-  \@startsection{chapter}{0}{0mm}{%
-    -2\baselineskip \@plus -\baselineskip \@minus -.2ex}{\p@}{%
-    \normalfont\Huge\bfseries\raggedright}}
-\renewcommand*\l@chapter{\@dottedtocline{0}{0pt}{1em}}
-\def\@schapter#1{\section*#1}
-\renewenvironment{figure}[1][]{%
-  \def\@captype{figure}
-  \noindent
-  \begin{minipage}{\columnwidth}}{%
-  \end{minipage}\par\addvspace{\baselineskip}}
-\renewcommand{\theequation}{\@arabic\c@equation}
-\def\equation{%
-  \let\refstepcounter\H@refstepcounter
-  \H@equation
-  \def\newname{\arabic{chapter}.\theequation}%
-  \let\theHequation\newname%
-  \hyper@makecurrent{equation}%
-  \Hy@raisedlink{\hyper@anchorstart{\@currentHref}}%
-  \let\refstepcounter\new@refstepcounter}%
-\def\endequation{\Hy@raisedlink{\hyper@anchorend}\H@endequation}
-\renewcommand{\thefigure}{\@arabic\c@figure}
-\renewcommand{\thetable}{\@arabic\c@table}
-\renewcommand{\contentsname}{Conteúdo desta edição:}
-\renewcommand\tableofcontents{%
-  \section*{\contentsname
-    \@mkboth{%
-      \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-  \@starttoc{toc}}
-\renewcommand{\titlepage}{%
-  \noindent
-  %\rule{\textwidth}{1pt}\\[-.8\baselineskip]
-  %\rule{\textwidth}{.5pt}
-
-  \begin{center}
-    \includegraphics[width=12cm]{figuras/wordcloud-black}
-  \end{center}
-%  A Newsletter da Comissão de Pedometria\hfill
-%\begin{small}
-\textbf{Newsletter da Comissão de Pedometria da SBCS}
-%\textbf{C}omissão de \textbf{P}edometria da \textbf{SBCS}
-%\end{small}
-\hfill
-  Número \PEDOMETRIAnews@number, \PEDOMETRIAnews@date\\[-.5\baselineskip]
-  %Número \PEDOMETRIAnews@number\\[-.5\baselineskip]
-  \rule{\textwidth}{.5pt}\\[-.7\baselineskip]
-  \rule{\textwidth}{2pt}
-  \vspace{1cm}
-  \fancyhf{}
-  \fancyhead[L]{Pedometria/SBCS}
-  %\fancyhead[R]{Num.~\PEDOMETRIAnews@number, \PEDOMETRIAnews@date}
-  \fancyhead[R]{Num.~\PEDOMETRIAnews@number}
-  \fancyfoot[L]{ISSN XXXX-XXXX}
-  \fancyfoot[R]{\thepage}
-  \thispagestyle{empty}
-  \begin{bottombox}
-    \begin{multicols}{2}
-      \setcounter{tocdepth}{0}
-      \tableofcontents
-      \setcounter{tocdepth}{2}
-    \end{multicols}
-  \end{bottombox}}
-\setlength{\textheight}{240mm}
-\setlength{\topmargin}{0mm}
-\setlength{\textwidth}{17cm}
-\setlength{\oddsidemargin}{-6mm}
-\setlength{\columnseprule}{.1pt}
-\setlength{\columnsep}{20pt}
-\RequirePackage{ae,mathpazo}
-\RequirePackage[T1]{fontenc}
-\renewcommand{\rmdefault}{ppl}
-\renewcommand{\sfdefault}{aess}
-\renewcommand{\ttdefault}{aett}
-\definecolor{Red}{rgb}{0.7,0,0}
-\definecolor{Blue}{rgb}{0,0,0.8}
-\definecolor{hellgrau}{rgb}{0.55,0.55,0.55}
-\newcommand{\R}{R}
-\newcommand{\address}[1]{\addvspace{\baselineskip}\noindent\emph{#1}}
-\newcommand{\email}[1]{\href{mailto:#1}{\normalfont\texttt{#1}}}
-\newsavebox{\PEDOMETRIAnews@box}
-\newlength{\PEDOMETRIAnews@len}
-\newenvironment{bottombox}{%
-  \begin{figure*}[b]
+  \RequirePackage{multicol,graphicx,color,fancyhdr,hyperref}
+  \newcommand{\volume}[1]{\def\PEDOMETRIAnews@volume{#1}}
+  \newcommand{\number}[1]{\def\PEDOMETRIAnews@number{#1}}
+  \renewcommand{\date}[1]{\def\PEDOMETRIAnews@date{#1}}
+  \setcounter{secnumdepth}{-1}
+  \renewcommand{\author}[1]{\def\PEDOMETRIAnews@author{#1}}
+  \renewcommand{\title}[1]{\def\PEDOMETRIAnews@title{#1}}
+  \newcommand{\subtitle}[1]{\def\PEDOMETRIAnews@subtitle{#1}}
+  \newenvironment{article}{%
+    \author{}\title{}\subtitle{}}{\end{multicols}}
+  \renewcommand{\maketitle}{
+    \begin{multicols}{2}[\chapter{\PEDOMETRIAnews@title}\refstepcounter{chapter}][3cm]
+      \ifx\empty\Rnews@subtitle\else\noindent\textbf{\PEDOMETRIAnews@subtitle}
+      \par\nobreak\addvspace{\baselineskip}\fi
+      \ifx\empty\PEDOMETRIAnews@author\else\noindent\textit{\PEDOMETRIAnews@author}
+      \par\nobreak\addvspace{\baselineskip}\fi
+      \@afterindentfalse\@nobreaktrue\@afterheading}
+  \renewcommand\chapter{\secdef\PEDOMETRIAnews@chapter\@schapter}
+  \providecommand{\nohyphens}{%
+    \hyphenpenalty=10000\exhyphenpenalty=10000\relax}
+  \newcommand{\PEDOMETRIAnews@chapter}{%
+    \renewcommand{\@seccntformat}[1]{}%
+    \@startsection{chapter}{0}{0mm}{%
+      -2\baselineskip \@plus -\baselineskip \@minus -.2ex}{\p@}{%
+      \normalfont\Huge\bfseries\raggedright}}
+  \renewcommand*\l@chapter{\@dottedtocline{0}{0pt}{1em}}
+  \def\@schapter#1{\section*#1}
+  \renewenvironment{figure}[1][]{%
+    \def\@captype{figure}
+    \noindent
+    \begin{minipage}{\columnwidth}}{%
+    \end{minipage}\par\addvspace{\baselineskip}}
+  \renewcommand{\theequation}{\@arabic\c@equation}
+  \def\equation{%
+    \let\refstepcounter\H@refstepcounter
+    \H@equation
+    \def\newname{\arabic{chapter}.\theequation}%
+    \let\theHequation\newname%
+    \hyper@makecurrent{equation}%
+    \Hy@raisedlink{\hyper@anchorstart{\@currentHref}}%
+    \let\refstepcounter\new@refstepcounter}%
+  \def\endequation{\Hy@raisedlink{\hyper@anchorend}\H@endequation}
+  \renewcommand{\thefigure}{\@arabic\c@figure}
+  \renewcommand{\thetable}{\@arabic\c@table}
+  \renewcommand{\contentsname}{Conteúdo desta edição:}
+  \renewcommand\tableofcontents{%
+    \section*{\contentsname
+      \@mkboth{%
+        \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}}
+  \renewcommand{\titlepage}{%
+    \noindent
+    %\rule{\textwidth}{1pt}\\[-.8\baselineskip]
+    %\rule{\textwidth}{.5pt}
     \begin{center}
-      \noindent
-      \begin{lrbox}{\PEDOMETRIAnews@box}
-        \begin{minipage}{0.99\textwidth}}{%
-        \end{minipage}
-      \end{lrbox}
-      \addtolength{\PEDOMETRIAnews@len}{\fboxsep}
-      \addtolength{\PEDOMETRIAnews@len}{\fboxrule}
-      \hspace*{-\PEDOMETRIAnews@len}\fbox{\usebox{\PEDOMETRIAnews@box}}
+      \includegraphics[width=12cm]{figuras/wordcloud-black}
     \end{center}
-  \end{figure*}}
-\RequirePackage{verbatim}
-\def\boxedverbatim{%
-  \def\verbatim@processline{%
-    {\setbox0=\hbox{\the\verbatim@line}%
-    \hsize=\wd0 \the\verbatim@line\par}}%
-  \@minipagetrue
-  \@tempswatrue
-  \setbox0=\vbox
-  \bgroup\small\verbatim
-}
-\def\endboxedverbatim{%
-  \endverbatim
-  \unskip\setbox0=\lastbox
-  \egroup
-  \fbox{\box0}
-}
-\pagestyle{fancy}
+  %  A Newsletter da Comissão de Pedometria\hfill
+  %\begin{small}
+  \textbf{Newsletter da Comissão de Pedometria da SBCS}
+  %\textbf{C}omissão de \textbf{P}edometria da \textbf{SBCS}
+  %\end{small}
+  \hfill
+    Número \PEDOMETRIAnews@number, \PEDOMETRIAnews@date\\[-.5\baselineskip]
+    %Número \PEDOMETRIAnews@number\\[-.5\baselineskip]
+    \rule{\textwidth}{.5pt}\\[-.7\baselineskip]
+    \rule{\textwidth}{2pt}
+    \vspace{1cm}
+    \fancyhf{}
+    \fancyhead[L]{Pedometria/SBCS}
+    %\fancyhead[R]{Num.~\PEDOMETRIAnews@number, \PEDOMETRIAnews@date}
+    \fancyhead[R]{Num.~\PEDOMETRIAnews@number}
+    \fancyfoot[L]{ISSN XXXX-XXXX}
+    \fancyfoot[R]{\thepage}
+    \thispagestyle{empty}
+    \begin{bottombox}
+      \begin{multicols}{2}
+        \setcounter{tocdepth}{0}
+        \tableofcontents
+        \setcounter{tocdepth}{2}
+      \end{multicols}
+    \end{bottombox}}
+  \setlength{\textheight}{240mm}
+  \setlength{\topmargin}{0mm}
+  \setlength{\textwidth}{17cm}
+  \setlength{\oddsidemargin}{-6mm}
+  \setlength{\columnseprule}{.1pt}
+  \setlength{\columnsep}{20pt}
+  \RequirePackage{ae,mathpazo}
+  \RequirePackage[T1]{fontenc}
+  \renewcommand{\rmdefault}{ppl}
+  \renewcommand{\sfdefault}{aess}
+  \renewcommand{\ttdefault}{aett}
+  \definecolor{Red}{rgb}{0.7,0,0}
+  \definecolor{Blue}{rgb}{0,0,0.8}
+  \definecolor{hellgrau}{rgb}{0.55,0.55,0.55}
+  \newcommand{\R}{R}
+  \newcommand{\address}[1]{\addvspace{\baselineskip}\noindent\emph{#1}}
+  \newcommand{\email}[1]{\href{mailto:#1}{\normalfont\texttt{#1}}}
+  \newsavebox{\PEDOMETRIAnews@box}
+  \newlength{\PEDOMETRIAnews@len}
+  \newenvironment{bottombox}{%
+    \begin{figure*}[b]
+      \begin{center}
+        \noindent
+        \begin{lrbox}{\PEDOMETRIAnews@box}
+          \begin{minipage}{0.99\textwidth}}{%
+          \end{minipage}
+        \end{lrbox}
+        \addtolength{\PEDOMETRIAnews@len}{\fboxsep}
+        \addtolength{\PEDOMETRIAnews@len}{\fboxrule}
+        \hspace*{-\PEDOMETRIAnews@len}\fbox{\usebox{\PEDOMETRIAnews@box}}
+      \end{center}
+    \end{figure*}}
+  \RequirePackage{verbatim}
+  \def\boxedverbatim{%
+    \def\verbatim@processline{%
+      {\setbox0=\hbox{\the\verbatim@line}%
+      \hsize=\wd0 \the\verbatim@line\par}}%
+    \@minipagetrue
+    \@tempswatrue
+    \setbox0=\vbox
+    \bgroup\small\verbatim
+  }
+  \def\endboxedverbatim{%
+    \endverbatim
+    \unskip\setbox0=\lastbox
+    \egroup
+    \fbox{\box0}
+  }
+  \pagestyle{fancy}
 } % \ifthenelse{\boolean{PEDOMETRIAnews@driver}}
 \newcommand\code{\bgroup\@codex}
 \def\@codex#1{{\normalfont\ttfamily\hyphenchar\font=-1 #1}\egroup}
-\newcommand{\kbd}[1]{{\normalfont\texttt{#1}}}
-\newcommand{\key}[1]{{\normalfont\texttt{\uppercase{#1}}}}
+\newcommand{\key}[1]{{\normalfont\texttt{#1}}}
 \newcommand\samp{`\bgroup\@noligs\@sampx}
 \def\@sampx#1{{\normalfont\texttt{#1}}\egroup'}
 \newcommand{\var}[1]{{\normalfont\textsl{#1}}}
